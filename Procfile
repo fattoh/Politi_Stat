@@ -1,1 +1,1 @@
-web: gunicorn StatementsRate:app
+web: gunicorn StatementsRate.wsgi
