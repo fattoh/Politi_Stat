@@ -1,1 +1,1 @@
-web: gunicorn politi-statement:app
+web: gunicorn app:app
