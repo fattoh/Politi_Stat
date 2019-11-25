@@ -1,0 +1,396 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<style>
+    .swal-overlay {
+    background-color: rgba(222, 216, 216, 0.58);
+}
+    .swal-button {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        color: #deae9c;
+        border: 0;
+        background-color: #bd5d38;
+        box-shadow: inset;
+        border-radius: 8px;
+        padding: 10px 50px;
+        align-self: center
+}
+
+    .swal-button:hover {
+    color: #deae9c;
+    }
+
+    input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+    /* The container */
+    .container {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 16px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /* Hide the browser's default radio button */
+    .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    /* Create a custom radio button */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .container:hover input~.checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .container input:checked~.checkmark {
+        background-color: #deae9c;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .container input:checked~.checkmark:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .container .checkmark:after {
+        top: 9px;
+        left: 9px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    .content {
+        display: none;
+    }
+
+    textarea {
+        width: 100%;
+        height: 150px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        font-size: 16px;
+        color: dimgrey;
+        resize: none;
+    }
+
+    button {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        color: #deae9c;
+        border: 0;
+        background-color: #bd5d38;
+        box-shadow: inset;
+        border-radius: 8px;
+        padding: 10px 50px;
+        align-self: center
+    }
+
+    button:hover {
+        color: #eed6cd;
+    }
+
+    button:focus {
+        color: white;
+    }
+
+    .next {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        color: white;
+        border: 0;
+        background-color: forestgreen;
+        box-shadow: inset;
+        border-radius: 8px;
+        padding: 10px 24px;
+    }
+
+    .next span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+    .next span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+
+    .next:hover span {
+        padding-right: 25px;
+    }
+
+    .next:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+</style>
+
+<section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="Guideline">
+    <div class="w-100">
+        <h1 class="mb-0" style="        font-size: 60px">Salam Alikom
+            <span class="text-primary">, Nice to help me.</span>
+        </h1>
+        <div class="subheading mb-5">
+            <a>Please, read the following guidelines:</a>
+        </div>
+        <p class="lead mb-5">
+            Your task:
+            <br />
+            You are required to rate US politicians' statements truth, based on reading attached(rule: paragraph).
+
+            Each Qustion contains:
+            <ol type="1">
+                <li>Statement:
+                    A statement said by a politician.
+                </li>
+                <li>
+                    Paragraph:
+                    A Pragraph that will help you (the annotator) to rate the truth of the statement.
+                </li>
+                <li>Rate (estimate):
+                    Your rate (estimation) of the truth , based on the paragraph you read.
+                    You have to select only one of six labels which are:
+                    <br />
+
+
+
+                </li>
+            </ol>
+
+
+            Note
+            The statements and paragraphs are in American English, so no problem if you use a translator (ex. google
+            translator).
+
+            Great Thanks,
+            Let's move forward and do tasks.
+        </p>
+        <a style="font-size: 30px" class="nav-link js-scroll-trigger" href="#Example">
+            <p>
+                See example
+            </p>
+        </a>
+
+
+
+
+    </div>
+</section>
+<hr class="m-0">
+
+<section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="Example">
+    <div class="w-100">
+        <h2 class="mb-5">Example</h2>
+
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+            <div class="resume-content">
+                <h3 class="mb-0">United States is "very energy independent."</h3>
+                <div class="subheading mb-3"></div>
+                <p>
+                    It's somewhat premature to label the United States energy independent given that Americans consumed
+                    more energy than the country produced for most of the last year that we have data.
+                    But the gap between U.S. energy production and consumption has been narrowing for some time,
+                    particularly during Trump's presidency,
+                    and data shows several recent months where production outpaced American energy use.</p>
+
+            </div>
+
+
+            <div class="resume-date text-md-right">
+                <span class="text-primary">Example</span>
+            </div>
+        </div>
+        <label class="container">Extreme False
+            <input type="radio" required name="stat1" value="Extreme_False" /><span class="checkmark"></span>
+        </label>
+        <label class="container"> False <input type="radio" name="stat" required value="False" /><span
+                class="checkmark"></span>
+        </label>
+        <label class="container"> Mostly False <input type="radio" name="stat" required value="Mostly_False" /><span
+                class="checkmark"></span>
+        </label>
+        <label class="container"> Half True <input type="radio" name="stat" required value="Half_True" checked = "checked" /><span
+                class="checkmark"></span>
+        </label>
+        <label class="container"> Mostly True <input type="radio" name="stat" required value="Mostly_True" /><span
+                class="checkmark"></span>
+        </label>
+        <label class="container"> True <input type="radio" name="stat" required value="True" /><span
+                class="checkmark"></span>
+        </label>
+        <button class="btn btn-indigo btn-rounded nextBtn float-right" type="button">Next</button>
+
+    </div>
+
+</section>
+
+<hr class="m-0">
+
+<section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="Annotation">
+    <h3 id="mn">
+
+
+        <a href="javascript:;" class="button-next"><button type="button">Start Annotation Task</button></a> </h3>
+    <div class="w-100 content">
+        <!-- Steps form -->
+        <div class="card">
+            <div class="card-body mb-4">
+
+
+
+                <!-- Stepper -->
+                <div class="steps-form" style="display: none">
+                    <div class="steps-row setup-panel">
+                        {% for r in d %}
+                        <div class="steps-step">
+                            {% if forloop.first %}
+                            <a href="#step-{{forloop.counter}}" type="button"
+                                class="btn btn-indigo btn-circle">{{forloop.counter}}</a>
+                            {% else %}
+                            <a href="#step-{{forloop.counter}}" type="button" disabled="disabled"
+                                class="btn btn-default btn-circle">{{forloop.counter}}</a>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <form action="{% url 'test'%}" method="post" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+                    {% for r in d %}
+
+                    <div class="row setup-content" id="step-{{forloop.counter}}">
+
+                        <div class="col-md-12">
+                            <div class="resume-date text-md-right">
+                                <span class="text-primary">{{forloop.counter}}/73</span>
+                            </div>
+                            {%if forloop.counter <= Stats|length %}
+
+                            <h3 class="mb-0">{{r.statment}}</h3>
+                            <div class="subheading mb-3"></div>
+                            <p> {{r.Paragraph}}</p>
+                            <br />
+                            <label class="container">Extreme False<input type="radio" required="required" name="stat{{r.id}}"
+                                    value="Extreme_False" /><span class="checkmark"></span>
+                            </label>
+                            <label class="container">False<input type="radio" required="required" name="stat{{r.id}}" value="False" /><span
+                                    class="checkmark"></span>
+                            </label>
+                            <label class="container">Mostly False<input type="radio" required="required" name="stat{{r.id}}"
+                                    value="Mostly_False" /><span class="checkmark"></span>
+                            </label>
+                            <label class="container">Half True<input type="radio" required="required" name="stat{{r.id}}"
+                                    value="Half_True" /><span class="checkmark"></span>
+                            </label>
+                            <label class="container">Mostly True<input type="radio" required="required" name="stat{{r.id}}"
+                                    value="Mostly_True" /><span class="checkmark"></span>
+                            </label>
+                            <label class="container">True<input type="radio" required="required" name="stat{{r.id}}" value="True" /><span
+                                    class="checkmark"></span>
+                            </label>
+                            <br />
+                            {% else %}
+                            <h2 class="mb-5">Salam Alikom, Again,</h2>
+
+                            <div class="subheading mb-3">Near to finish, Please Answer the following question:</div>
+                            <br />
+                            <div class="mb-0">{{r}}</div>
+
+                            <br />
+
+
+                            <input type="text" name="posts{{forloop.counter}}" required="required" placeholder="Your answer ... " \> 
+
+
+                            {% endif %}
+
+                            {% if forloop.last %}
+                            <button class="btn btn-default btn-rounded float-right" type="submit">Submit</button>
+                            {% else %}
+                            <button class="btn btn-indigo btn-rounded nextBtn float-right" type="button">Next</button>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                </form>
+            </div>
+        </div>
+        <!-- Steps form -->
+
+
+    </div>
+</section>
+
+<hr class="m-0">
+
+<section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="Contact">
+    <div class="w-100">
+        <h2 class="mb-5">Contact Us</h2>
+        <p>
+            <br />
+            Visit Our Website <a href="www.dataplume.com"> www.dataplume.com </a> 
+            
+        </p>
+            
+            <br />
+        <p>
+            For any Qustion:
+        </p>
+                <strong>Contact Us :</strong>   <a href="mailto:info@dataplume.com">info@dataplume.com</a>
+       
+    </div>
+</section>
+
+
+
+
+{% endblock %}
