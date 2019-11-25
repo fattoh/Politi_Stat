@@ -195,7 +195,7 @@ input[type=text]:focus {
                 </li>
                 <li>Rate (estimate):
                     Your rate (estimation) of the truth , based on the paragraph you read.
-                    You have to select only one of six labels which are:
+                    You have to select only one of six labels which are [Extreme False - False - Mostly False - Half True - Mostly True - True]
                     <br />
 
 
@@ -293,7 +293,7 @@ input[type=text]:focus {
                             <a href="#step-{{forloop.counter}}" type="button"
                                 class="btn btn-indigo btn-circle">{{forloop.counter}}</a>
                             {% else %}
-                            <a href="#step-{{forloop.counter}}" type="button" disabled="enabled"
+                            <a href="#step-{{forloop.counter}}" type="button" disabled="disabled"
                                 class="btn btn-default btn-circle">{{forloop.counter}}</a>
                             {% endif %}
                         </div>
