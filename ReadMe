@@ -1,6 +1,10 @@
 This is a political statements annotation tool.
-1.csv contains the statments
-ground truth and 
+1.csv contains the statements
+GroundTruth _ Order of Statments.xls contains ground truth and the order of statements
+
+Cite A Robust Consistency Model of Crowd Workers in Text Labeling Tasks
+FATTOH AL-QERSHI1, MUHAMMAD AL-QURISHI2, Member, IEEE, MEHMET SABIH AKSOY1, MAJED AL-RUBAIAN2
+
+Copyright: dataplume lab. 
 Developers: Mohammad Alquraishi
 Fattoh Alqershi
-Copyright: dataplume lab.groudn truth 
