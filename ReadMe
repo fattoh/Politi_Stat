@@ -2,8 +2,8 @@ This is a political statements annotation tool.
 1.csv contains the statements
 GroundTruth _ Order of Statments.xls contains ground truth and the order of statements
 
-Cite A Robust Consistency Model of Crowd Workers in Text Labeling Tasks
-FATTOH AL-QERSHI1, MUHAMMAD AL-QURISHI2, Member, IEEE, MEHMET SABIH AKSOY1, MAJED AL-RUBAIAN2
+F. Alqershi, M. Al-Qurishi, M. S. Aksoy, M. Alrubaian and M. Imran, "A Robust Consistency Model of Crowd Workers in Text Labeling Tasks," 
+in IEEE Access, vol. 8, pp. 168381-168393, 2020, doi: 10.1109/ACCESS.2020.3022773.
 
 Copyright: dataplume lab. 
 Developers: Mohammad Alquraishi
